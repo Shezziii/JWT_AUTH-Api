@@ -3,11 +3,11 @@
 from rest_framework import serializers
 from .models import iUser
 
-class UserRegistrationSerializer(serializers.ModelSerializer):
+class UserRegistrationSerializers(serializers.ModelSerializer):
   # We are writing this becoz we need confirm password field in our Registratin Request
   password2 = serializers.CharField(style={'input_type':'password'}, write_only=True)
   class Meta:
-    model = User
+    model = iUser
     fields=['email', 'name', 'password', 'password2']
     extra_kwargs={
       'password':{'write_only':True}
@@ -40,7 +40,7 @@ class UserProfileSerializers(serializers.ModelSerializer):
              
         
 
-class UserChangePasswordSerializer(serializers.Serializer):
+class UserChangePass(serializers.Serializer):
   password = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)
   password2 = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)
   class Meta:
