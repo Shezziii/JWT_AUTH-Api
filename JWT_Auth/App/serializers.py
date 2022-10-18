@@ -47,7 +47,7 @@ class UserChangePass(serializers.Serializer):
     fields = ['email','password', 'password2']
 
   def validate(self, attrs):
-    email=data.get('email')
+    email=attrs.get('email')
     if user:=iUser.objects.get(email=email).exists():
         password = attrs.get('password')
         password2 = attrs.get('password2')
