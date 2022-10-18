@@ -3,6 +3,13 @@ from App.models import iUser
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group
 
+
+# Admin panel Changes. 
+admin.site.site_header = "✨ ✨ ✨ iCoder ✨ ✨ ✨"
+admin.site.site_title = "Welcome to Shuib's' Dashboard."
+admin.site.index_title = "Welcome to this Portal."
+
+
 # Register your models here.
 
 class UserAdmin(BaseUserAdmin):
