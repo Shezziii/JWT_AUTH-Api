@@ -22,7 +22,7 @@ class UserRegistrationSerializers(serializers.ModelSerializer):
     return attrs
 
   def create(self, validate_data):
-    return User.objects.create_user(**validate_data)
+    return iUser.objects.create_user(**validate_data)
 
        
 
