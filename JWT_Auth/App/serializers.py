@@ -46,12 +46,12 @@ class UserChangePass(serializers.Serializer):
   class Meta:
     fields = ['email','password', 'password2']
 
-   def validate(self, attrs):
+  def validate(self, attrs):
     user = self.context.get('user')
     password = attrs.get('password')
     password2 = attrs.get('password2')
     if password != password2:
-        raise serializers.ValidationError("Password and Confirm Password doesn't match")
+      raise serializers.ValidationError("Password and Confirm Password doesn't match")
     user.set_password(password)
     user.save()
     return attr                                      
