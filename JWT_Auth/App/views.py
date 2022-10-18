@@ -57,7 +57,7 @@ class ChangePassView(APIView):
           print("***************")
           print(request.user)
           print("***************")
-          user=UserChangePass(data=request.data) 
+          user=UserChangePass(data=request.data,context={'user':request.user}) 
           if user.is_valid(raise_exception=True):
               return Response({'msg':'Password Changes Successfully.','New Password' : user.password},status=status.HTTP_200_OK)
           return Response({'Error':user.error},status=status.HTTP_400_BAD_REQUEST)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
