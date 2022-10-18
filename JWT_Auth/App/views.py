@@ -9,7 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 import json
 from rest_framework.renderers import JSONRenderer
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 #Function for cretaing token Manually.
 def generate_token(user):
@@ -51,9 +51,8 @@ class UserProfileView(APIView):
       permission_classes=[IsAuthenticated]
       def get(self,request,format=None):
           user=UserProfileSerializers(request.user)
-          data=JSONRenderer().render(user.data)
-          print(f"********\n{data}\n**********") 
-          return HttpResponse(data , content_type='Application/json')  
+          print("******** Working ***********")
+          return JsonResponse(user.data)
                                                               
 class ChangePassView(APIView):
       permission_classes=[IsAuthenticated] 
