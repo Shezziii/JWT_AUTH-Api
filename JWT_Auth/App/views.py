@@ -8,6 +8,9 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 import json
+from rest_framework.renderers import JSONRenderer
+from django.http import HttpResponse
+
 #Function for cretaing token Manually.
 def generate_token(user):
     refresh = RefreshToken.for_user(user)
@@ -48,9 +51,10 @@ class UserProfileView(APIView):
       permission_classes=[IsAuthenticated]
       def get(self,request,format=None):
           user=UserProfileSerializers(request.user)
-          data=json.dumps({'Details':user.data})
-          #print(data) 
-          return Response({data} , status=status.HTTP_201_CREATED)                                                      
+          data=JSONRenderer().render(user.data)
+          print(f"********\n{data}\n**********") 
+          return HttpResponse(data , content_type='Application/json')  
+                                                              
 class ChangePassView(APIView):
       permission_classes=[IsAuthenticated] 
       def post(self,request,format=True):
