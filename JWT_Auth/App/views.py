@@ -6,7 +6,6 @@ from .serializers import UserRegistrationSerializers ,UserLoginSerializers , Use
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from django.http import JsonResponse
 
 #Function for cretaing token Manually.
