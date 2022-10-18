@@ -7,8 +7,6 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-import json
-from rest_framework.renderers import JSONRenderer
 from django.http import JsonResponse
 
 #Function for cretaing token Manually.
